@@ -1,5 +1,6 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import axios from "axios";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const SearchBar = () => {
@@ -15,11 +16,17 @@ const SearchBar = () => {
 
   return (
     <div className="w-full max-w-5xl mx-auto rounded-md">
-      <div className="w-full flex border border-stone-400 overflow-hidden">
+      <div className="w-full flex border border-stone-400 items-center overflow-hidden">
         <input type="text" className="w-full outline-none p-2" />
-        <button className="w-14">
+        <Link
+          href={{
+            pathname: `/search/${selectedTags.join(',')}`,
+          }}
+          className="w-14"
+        >
           <Icon icon="material-symbols:search" className="mx-auto" />
-        </button>
+        </Link>
+
         <button
           className="text-nowrap p-2 px-4 bg-stone-300 border-l-stone-400"
           onClick={() => setIsAddTag((prev) => !prev)}

@@ -37,7 +37,7 @@ const Calendar = () => {
             isShowTags
             isShowActer={false}
             isShowViewDetail={true}
-            isShowJoinButton={true}
+            isShowJoinButton={false}
           />
         </>
       ))}

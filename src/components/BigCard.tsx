@@ -26,6 +26,7 @@ const BigCard = ({
 }) => {
   //console.log(data);
   const [liked, setLiked] = useState(false);
+  const [isJoined, setIsJoined] = useState(false);
 
   const handleLike = (event: React.MouseEvent<HTMLButtonElement>) => {
     // if (liked) {
@@ -37,7 +38,7 @@ const BigCard = ({
   };
 
   return (
-    <div className="flex rounded-2xl overflow-hidden bg-white shadow-lg hover:shadow-xl max-w-[800px] h-[250px]">
+    <div className="flex rounded-2xl overflow-hidden bg-white shadow-lg hover:shadow-xl max-w-[800px] h-fit">
       {/* event image */}
       <div className="relative w-full">
         <Image
@@ -67,7 +68,7 @@ const BigCard = ({
         {isShowPaticipants && (
           <div className="flex gap-2 items-center text-sm">
             <Icon icon="fluent:people-community-48-filled" width={30} />
-            {Math.round(Math.random() * 100)} คน
+            {323} คน
           </div>
         )}
 
@@ -75,8 +76,11 @@ const BigCard = ({
         {isShowTags && (
           <div className="flex gap-2">
             #tag
-            {(data as any).Category.map((tag: {id: number, name: string}) => (
-              <div className="bg-green-400 px-4 rounded-full text-xs font-bold flex items-center" key={tag["id"]}>
+            {(data as any).Category.map((tag: { id: number; name: string }) => (
+              <div
+                className="bg-green-400 px-4 rounded-full text-xs font-bold flex items-center"
+                key={tag["id"]}
+              >
                 {tag.name}
               </div>
             ))}
@@ -110,13 +114,26 @@ const BigCard = ({
         </div>
 
         {/* acter profile */}
-        {isShowActer && (
-          <div className="flex justify-end">
+        <div className="flex justify-between items-center">
+          {isShowJoinButton && (
+            <button
+              className={` px-8 rounded-full h-fit py-1  ${
+                isJoined
+                  ? "bg-gray-400 text-black"
+                  : "bg-red-400 text-white hover:bg-red-200 transition-all"
+              }`}
+              disabled={isJoined}
+              onClick={() => setIsJoined(true)}
+            >
+              {isJoined ? 'เข้าร่วมเเล้ว' : 'เข้าร่วมเลย'}
+            </button>
+          )}
+          {isShowActer && (
             <div className="relative w-16 h-16 rounded-2xl overflow-hidden">
               <Image src={data.image} fill alt="acter-image" />
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );

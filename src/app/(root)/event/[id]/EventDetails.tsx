@@ -8,7 +8,7 @@ const EventDetails = (eventInfo: Event) => {
   const actDate = new Date(eventInfo.eventDate).toDateString();
   console.log(actDate);
   return (
-    <div className="grid grid-cols-1">
+    <div className="">
       <div className="fixed blur -z-10">
         <Image
           src={eventInfo.image}

@@ -47,7 +47,7 @@ const Home = () => {
               isShowTags={false}
               isShowActer={false}
               isShowViewDetail={true}
-              isShowJoinButton={true}
+              isShowJoinButton={false}
               key={id}
             />
           ))}
